@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mis_libros/colors/colors.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -15,7 +16,7 @@ class _StartScreen extends State<StartScreen> {
     // Scaffold es un widget que implementa el diseño visual básico de la mayoría de las aplicaciones de Material Design.
     return Scaffold(
         //ponemos el fondo de la app en marron5
-        backgroundColor: Colors.marron5,
+        backgroundColor: MisColores.marronOscuro1,
         //SingleChildScrollView es un widget que permite desplazarse hacia arriba y hacia abajo.
         body: SingleChildScrollView(
           //ClampingScrollPhysics es un tipo de ScrollPhysics que no permite que el contenido se desplace más allá de sus límites.
@@ -73,8 +74,8 @@ class _StartScreen extends State<StartScreen> {
                         height: 55,
                         child: ElevatedButton(
                           style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.marron4),
+                            backgroundColor: MaterialStateProperty.all(
+                                MisColores.marronOscuro4),
                           ),
                           child: const Center(
                             child: Text(
@@ -98,8 +99,8 @@ class _StartScreen extends State<StartScreen> {
                         height: 55,
                         child: ElevatedButton(
                           style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.marron4),
+                            backgroundColor: MaterialStateProperty.all(
+                                MisColores.marronOscuro4),
                           ),
                           child: const Center(
                             child: Text(
