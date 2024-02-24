@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mis_libros/colors/colors.dart';
+import 'package:mis_libros/screens/pop_registrer.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -111,6 +112,7 @@ class _StartScreen extends State<StartScreen> {
                           //cuando se presione el boton llevara al usuario a la pantalla de registro
                           onPressed: () {
                             //aqui se navegara a la pantalla de registro
+                            PopRegistrer.showRegisterDialog(context);
                           },
                         ),
                       )),
