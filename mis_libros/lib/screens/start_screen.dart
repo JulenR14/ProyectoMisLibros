@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mis_libros/colors/colors.dart';
+import 'package:mis_libros/screens/home.dart';
 import 'package:mis_libros/screens/pop_registrer.dart';
 
 class StartScreen extends StatefulWidget {
@@ -25,7 +26,8 @@ class _StartScreen extends State<StartScreen> {
           //SizedBox es un widget que impone un tamaño fijo a su hijo.
           child: SizedBox(
               //MediaQuery.of(context).size.height y MediaQuery.of(context).size.width nos dan la altura y anchura de la pantalla
-              height: MediaQuery.of(context).size.height,
+              height: MediaQuery.of(context).size.height -
+                  MediaQuery.of(context).padding.top,
               width: MediaQuery.of(context).size.width,
               //Column es un widget que organiza a sus hijos en una columna vertical.
               child: Column(
@@ -88,6 +90,10 @@ class _StartScreen extends State<StartScreen> {
                           //si no existe el usuario lo llevara a la pantalla de registro
                           onPressed: () {
                             //aqui se llamara al metodo que implementara el inicio de sesion
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeScreen()));
                           },
                         ),
                       )),
@@ -162,7 +168,13 @@ class _StartScreen extends State<StartScreen> {
                               ),
                             ],
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            //aqui se llamara al metodo que implementara el inicio de sesion con google
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeScreen()));
+                          },
                         ),
                       ))
                 ],

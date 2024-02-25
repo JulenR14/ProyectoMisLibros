@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mis_libros/colors/colors.dart';
+import 'package:mis_libros/screens/home.dart';
 
 class PopRegistrer {
   static void showRegisterDialog(BuildContext context) {
@@ -77,7 +78,11 @@ class PopRegistrer {
                     ),
                     onPressed: () {
                       //aqui se navegara a la pantalla de registro
-                      Navigator.pop(context);
+                      //Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()));
                     },
                   ),
                 ],

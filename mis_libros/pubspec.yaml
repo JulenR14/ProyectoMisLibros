@@ -75,10 +75,26 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: InriaSerif
+      fonts:
+        - asset: assets/fonts/InriaSerif-Bold.ttf
+        - asset: assets/fonts/InriaSerif-BoldItalic.ttf
+        - asset: assets/fonts/InriaSerif-Italic.ttf
+        - asset: assets/fonts/InriaSerif-Light.ttf
+        - asset: assets/fonts/InriaSerif-LightItalic.ttf
+        - asset: assets/fonts/InriaSerif-Regular.ttf
+
+    - family: KaiseiDecol
+      fonts:
+        - asset: assets/fonts/KaiseiDecol-Bold.ttf
+        - asset: assets/fonts/KaiseiDecol-Medium.ttf
+        - asset: assets/fonts/KaiseiDecol-Regular.ttf
+
+    - family: RobotoSerif
+      fonts:
+        - asset: assets\fonts\RobotoSerif-Italic-VariableFont_GRAD,opsz,wdth,wght.ttf
+        - asset: assets\fonts\RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
