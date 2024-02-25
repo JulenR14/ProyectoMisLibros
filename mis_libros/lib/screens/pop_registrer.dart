@@ -60,15 +60,20 @@ class PopRegistrer {
                       )),
                     ),
                     //Row va a agrupar sus hijos en fila
-                    child: const Row(
+                    child: Row(
                       //alineamos al centro horizontalmente
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         //muestra el texto del boton, con un padding para separar el logo de Google con el
                         Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: 50, vertical: 10),
-                          child: Text(
+                              //para el padding horizantal se utiliza una operacion para que el padding sea el 7.5% del ancho de la pantalla
+                              //esto es para que el padding sea proporcional al tamaño de la pantalla
+                              horizontal:
+                                  (7.5 * MediaQuery.of(context).size.width) /
+                                      100,
+                              vertical: 10),
+                          child: const Text(
                             "Registrar",
                             style: TextStyle(
                                 color: MisColores.gainsboro, fontSize: 30),

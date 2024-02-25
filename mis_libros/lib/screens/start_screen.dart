@@ -12,6 +12,19 @@ class StartScreen extends StatefulWidget {
   State<StartScreen> createState() => _StartScreen();
 }
 
+class _prueba extends State<StartScreen> {
+  @override
+  Widget build(BuildContext context) {
+    var currentWidth = MediaQuery.of(context).size.width;
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [Text(currentWidth.toString())],
+      ),
+    );
+  }
+}
+
 class _StartScreen extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
@@ -35,7 +48,7 @@ class _StartScreen extends State<StartScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   //Este widget carga la imagen del logo de nuestra app
-                  Image.asset('assets/images/Logo.png', scale: 3.5),
+                  Image.asset('assets/images/Logo.png', scale: 4),
                   //Padding es un widget que añade un espacio alrededor de su hijo.
                   //Dentro de el tenemos un TextField que es un widget que permite al usuario escribir texto.
                   //En este caso el texto va a ser el correo de el usuario para hacer el inicio de sesión.
@@ -159,9 +172,14 @@ class _StartScreen extends State<StartScreen> {
                                 width: 30,
                               ),
                               //muestra el texto del boton, con un padding para separar el logo de Google con el
-                              const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 40),
-                                child: Text(
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    //para el padding horizantal se utiliza una operacion para que el padding sea el 7.5% del ancho de la pantalla
+                                    //esto es para que el padding sea proporcional al tamaño de la pantalla
+                                    horizontal: (7.5 *
+                                            MediaQuery.of(context).size.width) /
+                                        100),
+                                child: const Text(
                                   "Iniciar Sesion",
                                   style: TextStyle(color: Colors.black),
                                 ),
