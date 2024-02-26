@@ -4,6 +4,7 @@ import 'package:mis_libros/colors/colors.dart';
 import 'package:mis_libros/screens/views/tus_libros.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+// ignore: must_be_immutable
 class InfoLibro extends StatefulWidget {
   InfoLibro({super.key, required this.libro});
   Libro libro;
@@ -38,7 +39,7 @@ class _InfoLibro extends State<InfoLibro> {
                       fontSize: 37,
                       fontWeight: FontWeight.bold),
                 )),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -55,21 +56,46 @@ class _InfoLibro extends State<InfoLibro> {
                     )),
               ],
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             RatingBar.builder(
-              initialRating: 3,
-              minRating: 1,
+              itemSize: 55,
+              initialRating: widget.libro.valoracion,
+              minRating: 0,
               direction: Axis.horizontal,
               allowHalfRating: true,
               itemCount: 5,
-              itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+              itemPadding: const EdgeInsets.symmetric(horizontal: 5.0),
               itemBuilder: (context, _) => const Icon(
                 Icons.star,
                 color: MisColores.marronOscuro6,
               ),
               onRatingUpdate: (rating) {
+                widget.libro.valoracion = rating;
                 Logger().i(rating);
               },
+            ),
+            const SizedBox(height: 30),
+            Card(
+              color: MisColores.marronOscuro4,
+              child: SizedBox(
+                width: 300,
+                height: 400,
+                child: Positioned(
+                    right: 0,
+                    left: 0,
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Text(widget.libro.descripcion,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                fontFamily: 'RobotoSerif',
+                                color: MisColores.nero,
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal)),
+                      ),
+                    )),
+              ),
             ),
           ],
         ),
