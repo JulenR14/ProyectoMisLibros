@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mis_libros/colors/colors.dart';
+import 'package:mis_libros/screens/info_book.dart';
 
 class TusLibros extends StatefulWidget {
   const TusLibros({super.key});
@@ -10,24 +11,24 @@ class TusLibros extends StatefulWidget {
 
 class _TusLibros extends State<TusLibros> {
   //libros que utlizamos para comprobar como se ve la lista de libros
-  List<libro> listaLibros = [
-    libro('El inversor\ninteligente', 'Benjamin Graham',
+  List<Libro> listaLibros = [
+    Libro('El inversor\ninteligente', 'Benjamin Graham',
         'assets/images/librosPrueba/book_inversorInteligente.jpg'),
-    libro('Padre rico,\npadre pobre', 'Robert Kiyosaki',
+    Libro('Padre rico,\npadre pobre', 'Robert Kiyosaki',
         'assets/images/librosPrueba/book_padreRicoPadrePobre.jpg'),
-    libro('El hombre en\nbusca de sentido', 'Viktor Frankl',
+    Libro('El hombre en\nbusca de sentido', 'Viktor Frankl',
         'assets/images/librosPrueba/book_hombreEnBuscaDeSentido.jpg'),
-    libro('Piense y\nhágase rico', 'Napoleon Hill',
+    Libro('Piense y\nhágase rico', 'Napoleon Hill',
         'assets/images/librosPrueba/book_pienseYhagaseRico.jpg'),
-    libro('El poder\ndel ahora', 'Eckhart Tolle',
+    Libro('El poder\ndel ahora', 'Eckhart Tolle',
         'assets/images/librosPrueba/book_poderDelAhora.jpg'),
-    libro('El monje que\nvendio su ferrari', 'Robin Sharma',
+    Libro('El monje que\nvendio su ferrari', 'Robin Sharma',
         'assets/images/librosPrueba/book_monjeQueVendioSuFerrari.jpeg'),
-    libro('Hábitos Atómicos', 'James Clear',
+    Libro('Hábitos Atómicos', 'James Clear',
         'assets/images/librosPrueba/book_habitosAtomicos.jpg'),
-    libro('El poder de\nlas Palabras', 'Mariano Sigman',
+    Libro('El poder de\nlas Palabras', 'Mariano Sigman',
         'assets/images/librosPrueba/book_elPoderDeLasPalabras.jpg'),
-    libro('Nunca te pares', 'Phil Knight',
+    Libro('Nunca te pares', 'Phil Knight',
         'assets/images/librosPrueba/book_nuncaTePares.jpg')
   ];
 
@@ -52,7 +53,11 @@ class _TusLibros extends State<TusLibros> {
   Widget crearListaCards(int i) {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: Card(
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => InfoLibro(libro: listaLibros[i])));
+        },
+        child: Card(
         elevation: 4,
         color: MisColores.marronOscuro1,
         child: SizedBox(
@@ -96,14 +101,15 @@ class _TusLibros extends State<TusLibros> {
           ),
         ),
       ),
+      ),
     );
   }
 }
 
 //clase libro que utilizamos para crear los libros que se van a mostrar en la lista
-class libro {
+class Libro {
   String titulo;
   String autor;
   String imagen;
-  libro(this.titulo, this.autor, this.imagen);
+  Libro(this.titulo, this.autor, this.imagen);
 }
