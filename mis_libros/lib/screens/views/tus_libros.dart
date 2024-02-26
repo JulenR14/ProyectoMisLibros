@@ -55,52 +55,55 @@ class _TusLibros extends State<TusLibros> {
       padding: const EdgeInsets.all(10),
       child: GestureDetector(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => InfoLibro(libro: listaLibros[i])));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => InfoLibro(libro: listaLibros[i])));
         },
         child: Card(
-        elevation: 4,
-        color: MisColores.marronOscuro1,
-        child: SizedBox(
-          height: 200,
-          child: Row(
-            children: [
-              Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: Image(
-                    image: AssetImage(listaLibros[i].imagen),
-                    width: 100,
-                    height: 150,
-                  )),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Text(
-                      listaLibros[i].titulo,
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 20.5,
-                          fontWeight: FontWeight.bold),
+          elevation: 4,
+          color: MisColores.marronOscuro1,
+          child: SizedBox(
+            height: 200,
+            child: Row(
+              children: [
+                Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Image(
+                      image: AssetImage(listaLibros[i].imagen),
+                      width: 100,
+                      height: 150,
+                    )),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Text(
+                        listaLibros[i].titulo,
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 20.5,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Text(
-                      listaLibros[i].autor,
-                      style: const TextStyle(
-                          fontFamily: 'InriaSerif',
-                          color: Colors.black,
-                          fontSize: 17,
-                          fontWeight: FontWeight.normal),
-                    ),
-                  )
-                ],
-              ),
-            ],
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Text(
+                        listaLibros[i].autor,
+                        style: const TextStyle(
+                            fontFamily: 'InriaSerif',
+                            color: Colors.black,
+                            fontSize: 17,
+                            fontWeight: FontWeight.normal),
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
-      ),
       ),
     );
   }
