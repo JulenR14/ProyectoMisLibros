@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mis_libros/colors/colors.dart';
+import 'package:mis_libros/models/libro.dart';
 import 'package:mis_libros/screens/info_book.dart';
 
 class TusLibros extends StatefulWidget {
@@ -103,12 +104,13 @@ class _TusLibros extends State<TusLibros> {
               child: Row(
                 children: [
                   Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Image(
-                        image: AssetImage(listaLibros[i].imagen),
-                        width: 100,
-                        height: 150,
-                      )),
+                    padding: const EdgeInsets.all(15),
+                    child: Image(
+                      image: AssetImage(listaLibros[i].imagen),
+                      width: 100,
+                      height: 150,
+                    ),
+                  ),
                   SizedBox(
                     height: 200,
                     width: MediaQuery.of(context).size.width - 180,
@@ -150,15 +152,4 @@ class _TusLibros extends State<TusLibros> {
           )),
     );
   }
-}
-
-//clase libro que utilizamos para crear los libros que se van a mostrar en la lista
-class Libro {
-  String titulo;
-  String autor;
-  String imagen;
-  double valoracion;
-  String descripcion;
-  Libro(
-      this.titulo, this.autor, this.imagen, this.valoracion, this.descripcion);
 }

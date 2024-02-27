@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:mis_libros/colors/colors.dart';
+import 'package:mis_libros/models/libro.dart';
 import 'package:mis_libros/screens/views/tus_libros.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -28,17 +29,37 @@ class _InfoLibro extends State<InfoLibro> {
           children: [
             //titulo del libro
             Positioned(
-                right: 0,
-                left: 0,
-                child: Text(
-                  widget.libro.titulo,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontFamily: 'RobotoSerif',
-                      color: MisColores.marronOscuro4,
-                      fontSize: 37,
-                      fontWeight: FontWeight.bold),
-                )),
+              right: 0,
+              left: 0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Image(
+                      image: AssetImage(widget.libro.imagen),
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width - 180,
+                    child: Positioned(
+                        right: 0,
+                        left: 0,
+                        child: Text(
+                          widget.libro.titulo,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              fontFamily: 'RobotoSerif',
+                              color: MisColores.marronOscuro4,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold),
+                        )),
+                  )
+                ],
+              ),
+            ),
             const SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +72,7 @@ class _InfoLibro extends State<InfoLibro> {
                       style: const TextStyle(
                         fontFamily: 'RobotoSerif',
                         color: MisColores.nero,
-                        fontSize: 25,
+                        fontSize: 20,
                       ),
                     )),
               ],
@@ -79,7 +100,7 @@ class _InfoLibro extends State<InfoLibro> {
               color: MisColores.marronOscuro4,
               child: SizedBox(
                 width: 300,
-                height: 400,
+                height: MediaQuery.of(context).size.height - 400,
                 child: Positioned(
                     right: 0,
                     left: 0,
