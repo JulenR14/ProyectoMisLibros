@@ -98,6 +98,7 @@ class _TusLibros extends State<TusLibros> {
                     builder: (context) => InfoLibro(libro: listaLibros[i])));
           },
           child: Card(
+            shadowColor: MisColores.nero,
             color: MisColores.marronOscuro1,
             child: SizedBox(
               height: 200,
@@ -105,10 +106,13 @@ class _TusLibros extends State<TusLibros> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(15),
-                    child: Image(
-                      image: AssetImage(listaLibros[i].imagen),
-                      width: 100,
-                      height: 150,
+                    child: Hero(
+                      tag: listaLibros[i].imagen,
+                      child: Image(
+                        image: AssetImage(listaLibros[i].imagen),
+                        width: 100,
+                        height: 150,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -122,13 +126,17 @@ class _TusLibros extends State<TusLibros> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(10),
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              listaLibros[i].titulo,
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20.5,
-                                  fontWeight: FontWeight.bold),
+                            child: Hero(
+                              tag: listaLibros[i].titulo,
+                              child: Text(
+                                listaLibros[i].titulo,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontFamily: 'InriaSerif',
+                                    color: MisColores.marronOscuro4,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
                           Padding(

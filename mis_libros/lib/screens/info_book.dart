@@ -36,10 +36,13 @@ class _InfoLibro extends State<InfoLibro> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(5),
-                    child: Image(
-                      image: AssetImage(widget.libro.imagen),
-                      width: 100,
-                      height: 100,
+                    child: Hero(
+                      tag: widget.libro.imagen,
+                      child: Image(
+                        image: AssetImage(widget.libro.imagen),
+                        width: 100,
+                        height: 100,
+                      ),
                     ),
                   ),
                   SizedBox(
