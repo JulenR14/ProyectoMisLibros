@@ -20,7 +20,7 @@ class _HomeScreen extends State<HomeScreen> {
     //Lista de pantallas que se van a mostrar segun la seleccion del usuario en la appBar
     final screens = [
       const TusLibros(),
-      const AgregaLibro(),
+      AgregaLibro(),
       const BuscarLibros(),
     ];
 

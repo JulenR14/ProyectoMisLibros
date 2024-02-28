@@ -20,7 +20,7 @@ class _InfoLibro extends State<InfoLibro> {
     return Scaffold(
       backgroundColor: MisColores.marronOscuro1,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        forceMaterialTransparency: true,
       ),
       //utilizo el row para centrar el contenido a la mitad de la pantalla horizontalmente
       body: Center(
@@ -82,7 +82,7 @@ class _InfoLibro extends State<InfoLibro> {
             ),
             const SizedBox(height: 30),
             RatingBar.builder(
-              itemSize: 55,
+              itemSize: 40,
               initialRating: widget.libro.valoracion,
               minRating: 0,
               direction: Axis.horizontal,
@@ -100,7 +100,8 @@ class _InfoLibro extends State<InfoLibro> {
             ),
             const SizedBox(height: 30),
             Card(
-              color: MisColores.marronOscuro4,
+              shadowColor: MisColores.marronOscuro6,
+              color: MisColores.marronOscuro2,
               child: SizedBox(
                 width: 300,
                 height: MediaQuery.of(context).size.height - 400,
