@@ -15,6 +15,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreen extends State<HomeScreen> {
   int indexSeleccionado = 0;
 
+  setIndice(int index) {
+    setState(() {
+      indexSeleccionado = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     //Lista de pantallas que se van a mostrar segun la seleccion del usuario en la appBar
