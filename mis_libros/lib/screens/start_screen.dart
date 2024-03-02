@@ -96,7 +96,8 @@ class _StartScreen extends State<StartScreen> {
                           child: const Center(
                             child: Text(
                               "Iniciar Sesion",
-                              style: TextStyle(color: Colors.black),
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 18),
                             ),
                           ),
                           //cuando se presione el boton comprobara los datos del usuario y iniciara sesion
@@ -125,7 +126,8 @@ class _StartScreen extends State<StartScreen> {
                           child: const Center(
                             child: Text(
                               "Registrate",
-                              style: TextStyle(color: Colors.black),
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 18),
                             ),
                           ),
                           //cuando se presione el boton llevara al usuario a la pantalla de registro
@@ -181,7 +183,8 @@ class _StartScreen extends State<StartScreen> {
                                         100),
                                 child: const Text(
                                   "Iniciar Sesion",
-                                  style: TextStyle(color: Colors.black),
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 15),
                                 ),
                               ),
                             ],

@@ -125,9 +125,10 @@ class _AgregaLibro extends State<AgregaLibro> {
                 bottom: 20,
                 right: 20,
                 child: FloatingActionButton(
-                  child: Icon(Icons.check, size: 50),
                   backgroundColor: MisColores.marronOscuro4,
                   onPressed: () {},
+                  child: const Icon(Icons.check,
+                      size: 35, color: MisColores.marronOscuro1),
                 ))
           ],
         ));
