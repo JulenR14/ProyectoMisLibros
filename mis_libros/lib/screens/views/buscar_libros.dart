@@ -147,10 +147,21 @@ class _BuscarLibros extends State<BuscarLibros> {
           child: ListView.builder(
               itemCount: listaBusqueda.length,
               itemBuilder: (BuildContext context, int index) {
-                return Text(listaBusqueda[index]);
+                return _crearListaCards(index);
               }),
         ),
       ]),
+    );
+  }
+
+  Widget _crearListaCards(int i) {
+    return const Padding(
+      padding: EdgeInsets.all(10),
+      child: Card(
+        shadowColor: MisColores.nero,
+        color: MisColores.marronOscuro1,
+        child: SizedBox(height: 200, child: Center(child: Text("Prueba"))),
+      ),
     );
   }
 
