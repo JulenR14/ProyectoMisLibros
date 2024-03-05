@@ -51,27 +51,30 @@ class _BuscarLibros extends State<BuscarLibros> {
   }
 
   Widget _crearListaCards(int i) {
-    return Padding(
+    return const Padding(
       padding: EdgeInsets.all(10),
       child: Card(
         shadowColor: MisColores.nero,
         color: MisColores.marronOscuro4,
         child: SizedBox(
-            height: 200,
-            child: Row(
-              children: [
-                Container(
-                  height: 200,
-                  width: 150,
-                  color: Colors.red,
+          height: 200,
+          child: Positioned(
+              right: 0,
+              left: 0,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Text(
+                      "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontFamily: 'RobotoSerif',
+                          color: MisColores.nero,
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal)),
                 ),
-                Container(
-                  height: 200,
-                  width: MediaQuery.of(context).size.width - 180,
-                  color: Colors.blue,
-                )
-              ],
-            )),
+              )),
+        ),
       ),
     );
   }
