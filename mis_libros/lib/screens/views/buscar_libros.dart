@@ -39,13 +39,11 @@ class _BuscarLibros extends State<BuscarLibros> {
             ],
           ),
         ),
-        Expanded(
-          child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (BuildContext context, int index) {
-                return crearListaCards(index);
-              }),
-        ),
+        /*ListView.builder(
+            itemCount: listaLibros.length,
+            itemBuilder: (BuildContext context, int index) {
+              return crearListaCards(index);
+            }),*/
       ]),
     );
   }
@@ -88,10 +86,10 @@ class _BuscarLibros extends State<BuscarLibros> {
       padding: const EdgeInsets.all(10),
       child: GestureDetector(
           onTap: () {
-            Navigator.push(
+            /*Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => InfoLibro(libro: listaLibros[i])));
+                    builder: (context) => InfoLibro(libro: listaLibros[i])));*/
           },
           child: Card(
             shadowColor: MisColores.nero,
@@ -104,14 +102,14 @@ class _BuscarLibros extends State<BuscarLibros> {
                   Padding(
                     padding: const EdgeInsets.all(15),
                     //child: Hero(
-                    //tag: listaLibros[i].imagen,
+                    //tag: "${listaLibros[i].imagen}tuslibros",
                     child: Image(
                       image: AssetImage(listaLibros[i].imagen),
                       width: 100,
                       height: 150,
                     ),
+                    //),
                   ),
-                  //),
                   SizedBox(
                     height: 200,
                     width: MediaQuery.of(context).size.width - 180,

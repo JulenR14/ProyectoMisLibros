@@ -56,7 +56,7 @@ class _TusLibros extends State<TusLibros> {
                   Padding(
                     padding: const EdgeInsets.all(15),
                     child: Hero(
-                      tag: listaLibros[i].imagen,
+                      tag: "${listaLibros[i].imagen}tuslibros",
                       child: Image(
                         image: AssetImage(listaLibros[i].imagen),
                         width: 100,
