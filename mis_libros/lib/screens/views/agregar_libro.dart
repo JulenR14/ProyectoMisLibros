@@ -10,7 +10,21 @@ class AgregaLibro extends StatefulWidget {
   AgregaLibro({super.key});
 
   @override
-  State<AgregaLibro> createState() => _AgregaLibro();
+  State<AgregaLibro> createState() => prueba();
+}
+
+class prueba extends State<AgregaLibro> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Prueba'),
+      ),
+      body: const Center(
+        child: Text('Prueba'),
+      ),
+    );
+  }
 }
 
 class _AgregaLibro extends State<AgregaLibro> {

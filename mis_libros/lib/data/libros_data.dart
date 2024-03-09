@@ -6,7 +6,7 @@ List<Libro> listaLibros = [
       'Benjamin Graham',
       'assets/images/librosPrueba/book_inversorInteligente.jpg',
       4.5,
-      "El inversor inteligente es un libro de inversión escrito por Benjamin Graham en 1949. El libro es ampliamente considerado como uno de los mejores libros de inversión de todos los tiempos. Graham propone un método para encontrar empresas infravaloradas y actuar en consecuencia."),
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa El inversor inteligente es un libro de inversión escrito por Benjamin Graham en 1949. El libro es ampliamente considerado como uno de los mejores libros de inversión de todos los tiempos. Graham propone un método para encontrar empresas infravaloradas y actuar en consecuencia."),
   Libro(
       'Padre rico, padre pobre',
       'Robert Kiyosaki',

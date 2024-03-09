@@ -14,6 +14,20 @@ class InfoLibro extends StatefulWidget {
   State<InfoLibro> createState() => _InfoLibro();
 }
 
+class prueba extends State<InfoLibro> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Prueba'),
+      ),
+      body: const Center(
+        child: Text('Prueba'),
+      ),
+    );
+  }
+}
+
 class _InfoLibro extends State<InfoLibro> {
   @override
   Widget build(BuildContext context) {
@@ -29,38 +43,49 @@ class _InfoLibro extends State<InfoLibro> {
             //mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //titulo del libro
-              Positioned(
-                right: 0,
-                left: 0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: 140,
+                child: Stack(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: Hero(
-                        tag: "${widget.libro.imagen}tuslibros",
-                        child: Image(
-                          image: AssetImage(widget.libro.imagen),
-                          width: 100,
-                          height: 100,
-                        ),
+                    Positioned(
+                      right: 0,
+                      left: 0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(5),
+                            child: Hero(
+                              tag: "${widget.libro.imagen}tuslibros",
+                              child: Image(
+                                image: AssetImage(widget.libro.imagen),
+                                width: 100,
+                                height: 130,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 140,
+                            width: MediaQuery.of(context).size.width - 180,
+                            child: Stack(children: [
+                              Positioned(
+                                  right: 0,
+                                  left: 0,
+                                  child: Text(
+                                    widget.libro.titulo,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                        fontFamily: 'RobotoSerif',
+                                        color: MisColores.marronOscuro4,
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold),
+                                  ))
+                            ]),
+                          )
+                        ],
                       ),
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width - 180,
-                      child: Positioned(
-                          right: 0,
-                          left: 0,
-                          child: Text(
-                            widget.libro.titulo,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                fontFamily: 'RobotoSerif',
-                                color: MisColores.marronOscuro4,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold),
-                          )),
-                    )
                   ],
                 ),
               ),
@@ -80,7 +105,7 @@ class _InfoLibro extends State<InfoLibro> {
                         ),
                       )),
                 ],
-              ),
+              ),/*
               const SizedBox(height: 30),
               RatingBar.builder(
                 itemSize: 40,
@@ -122,7 +147,7 @@ class _InfoLibro extends State<InfoLibro> {
                         ),
                       )),
                 ),
-              ),
+              ),*/
             ],
           )
         ]),
