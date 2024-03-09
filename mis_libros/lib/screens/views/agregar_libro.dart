@@ -10,21 +10,7 @@ class AgregaLibro extends StatefulWidget {
   AgregaLibro({super.key});
 
   @override
-  State<AgregaLibro> createState() => prueba();
-}
-
-class prueba extends State<AgregaLibro> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Prueba'),
-      ),
-      body: const Center(
-        child: Text('Prueba'),
-      ),
-    );
-  }
+  State<AgregaLibro> createState() => _AgregaLibro();
 }
 
 class _AgregaLibro extends State<AgregaLibro> {
@@ -116,20 +102,28 @@ class _AgregaLibro extends State<AgregaLibro> {
                         child: SizedBox(
                           width: 300,
                           height: MediaQuery.of(context).size.height - 450,
-                          child: const Positioned(
-                              right: 0,
-                              left: 0,
-                              child: SingleChildScrollView(
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    labelText: 'Descripción',
-                                    //rellenamos el TextField con un color transparente
-                                    fillColor: Colors.transparent,
-                                    filled: true,
-                                  ),
-                                  maxLines: null,
-                                ),
-                              )),
+                          child: Stack(
+                            children: [
+                              Positioned(
+                                  right: 0,
+                                  left: 0,
+                                  child: SizedBox(
+                                    height: MediaQuery.of(context).size.height -
+                                        450,
+                                    child: const SingleChildScrollView(
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                          labelText: 'Descripción',
+                                          //rellenamos el TextField con un color transparente
+                                          fillColor: Colors.transparent,
+                                          filled: true,
+                                        ),
+                                        maxLines: null,
+                                      ),
+                                    ),
+                                  ))
+                            ],
+                          ),
                         ),
                       ),
                     ],

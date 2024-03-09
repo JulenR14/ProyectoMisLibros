@@ -105,7 +105,7 @@ class _InfoLibro extends State<InfoLibro> {
                         ),
                       )),
                 ],
-              ),/*
+              ),
               const SizedBox(height: 30),
               RatingBar.builder(
                 itemSize: 40,
@@ -131,23 +131,34 @@ class _InfoLibro extends State<InfoLibro> {
                 child: SizedBox(
                   width: 300,
                   height: MediaQuery.of(context).size.height - 400,
-                  child: Positioned(
-                      right: 0,
-                      left: 0,
-                      child: SingleChildScrollView(
-                        child: Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Text(widget.libro.descripcion,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                  fontFamily: 'RobotoSerif',
-                                  color: MisColores.nero,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.normal)),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        right: 0,
+                        left: 0,
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height -
+                              400, // Asegúrate de que el Container tenga una altura definida
+                          child: SingleChildScrollView(
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Text(
+                                widget.libro.descripcion,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontFamily: 'RobotoSerif',
+                                    color: MisColores.nero,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                            ),
+                          ),
                         ),
-                      )),
+                      )
+                    ],
+                  ),
                 ),
-              ),*/
+              ),
             ],
           )
         ]),
