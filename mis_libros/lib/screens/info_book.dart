@@ -6,8 +6,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 // ignore: must_be_immutable
 class InfoLibro extends StatefulWidget {
-  InfoLibro({super.key, required this.libro});
+  InfoLibro({super.key, required this.libro, required this.libroAgregado});
   Libro libro;
+  bool libroAgregado;
 
   @override
   State<InfoLibro> createState() => _InfoLibro();
@@ -109,24 +110,27 @@ class _InfoLibro extends State<InfoLibro> {
               ),
               //espacio entre el titulo y el icono
               const SizedBox(height: 30),
-              //ratingbar del libro
-              RatingBar.builder(
-                itemSize: 40,
-                initialRating: widget.libro.valoracion,
-                minRating: 0,
-                direction: Axis.horizontal,
-                allowHalfRating: true,
-                itemCount: 5,
-                itemPadding: const EdgeInsets.symmetric(horizontal: 5.0),
-                itemBuilder: (context, _) => const Icon(
-                  Icons.star,
-                  color: MisColores.marronOscuro6,
-                ),
-                onRatingUpdate: (rating) {
-                  widget.libro.valoracion = rating;
-                  Logger().i(rating);
-                },
-              ),
+              //Si la variable libroAgregado es true se muestra el ratingbar
+              //solo sera true si el libro pulsado es de la lista de libros leidos
+              widget.libroAgregado
+                  ? RatingBar.builder(
+                      itemSize: 40,
+                      initialRating: widget.libro.valoracion,
+                      minRating: 0,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemPadding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      itemBuilder: (context, _) => const Icon(
+                        Icons.star,
+                        color: MisColores.marronOscuro6,
+                      ),
+                      onRatingUpdate: (rating) {
+                        widget.libro.valoracion = rating;
+                        Logger().i(rating);
+                      },
+                    )
+                  : const SizedBox(),
               //espacio entre el ratingbar y la descripcion
               const SizedBox(height: 30),
               //descripcion del libro

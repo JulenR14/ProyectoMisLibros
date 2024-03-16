@@ -66,10 +66,11 @@ class _BuscarLibros extends State<BuscarLibros> {
       //con el GestureDetector se le indica que cuando se toque la card se va a abrir la pantalla de informacion del libro
       child: GestureDetector(
           onTap: () {
-            /*Navigator.push(
+            Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => InfoLibro(libro: listaLibros[i])));*/
+                    builder: (context) => InfoLibro(
+                        libro: listaLibros[i], libroAgregado: false)));
           },
           //se crea la carta del libro
           child: Card(
@@ -86,15 +87,11 @@ class _BuscarLibros extends State<BuscarLibros> {
                   //en la que se aplica con Hero una animacion de transicion
                   Padding(
                     padding: const EdgeInsets.all(15),
-                    //  child: Hero(
-                    // tag:
-                    //  "${listaLibros[i].imagen}tuslibros", //se le asigna un tag para poder hacer la animacion en la otra pantalla
                     child: Image(
                       image: AssetImage(listaLibros[i].imagen),
                       width: 100,
                       height: 150,
                     ),
-                    //),
                   ),
                   //El segundo elemento de la carta va a ser el titulo y el autor del libro
                   SizedBox(

@@ -44,7 +44,8 @@ class _TusLibros extends State<TusLibros> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => InfoLibro(libro: listaLibros[i])));
+                    builder: (context) =>
+                        InfoLibro(libro: listaLibros[i], libroAgregado: true)));
           },
           //se crea la carta del libro
           child: Card(
