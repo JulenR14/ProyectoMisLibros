@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:mis_libros/colors/colors.dart';
 import 'package:mis_libros/models/libro.dart';
-import 'package:mis_libros/screens/views/tus_libros.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 // ignore: must_be_immutable
@@ -14,20 +13,9 @@ class InfoLibro extends StatefulWidget {
   State<InfoLibro> createState() => _InfoLibro();
 }
 
-class prueba extends State<InfoLibro> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Prueba'),
-      ),
-      body: const Center(
-        child: Text('Prueba'),
-      ),
-    );
-  }
-}
-
+/**
+ * Esta clase se encarga de mostrar la pantalla de informacion de un libro
+ */
 class _InfoLibro extends State<InfoLibro> {
   @override
   Widget build(BuildContext context) {
@@ -42,7 +30,7 @@ class _InfoLibro extends State<InfoLibro> {
           Column(
             //mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              //titulo del libro
+              //titulo del libro y su imagen
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: 140,
@@ -72,14 +60,25 @@ class _InfoLibro extends State<InfoLibro> {
                               Positioned(
                                   right: 0,
                                   left: 0,
-                                  child: Text(
-                                    widget.libro.titulo,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                        fontFamily: 'RobotoSerif',
-                                        color: MisColores.marronOscuro4,
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),
+                                  child: SizedBox(
+                                    height: 140,
+                                    width:
+                                        MediaQuery.of(context).size.width - 180,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          widget.libro.titulo,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                              fontFamily: 'RobotoSerif',
+                                              color: MisColores.marronOscuro4,
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
                                   ))
                             ]),
                           )
@@ -89,7 +88,9 @@ class _InfoLibro extends State<InfoLibro> {
                   ],
                 ),
               ),
+              //espacio entre la imagen y el titulo
               const SizedBox(height: 30),
+              //icono y autor del libro
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -106,7 +107,9 @@ class _InfoLibro extends State<InfoLibro> {
                       )),
                 ],
               ),
+              //espacio entre el titulo y el icono
               const SizedBox(height: 30),
+              //ratingbar del libro
               RatingBar.builder(
                 itemSize: 40,
                 initialRating: widget.libro.valoracion,
@@ -124,15 +127,20 @@ class _InfoLibro extends State<InfoLibro> {
                   Logger().i(rating);
                 },
               ),
+              //espacio entre el ratingbar y la descripcion
               const SizedBox(height: 30),
+              //descripcion del libro
               Card(
                 shadowColor: MisColores.marronOscuro6,
                 color: MisColores.marronOscuro2,
+                //SizedBox establece el tamaño de la carta
                 child: SizedBox(
                   width: 300,
                   height: MediaQuery.of(context).size.height - 400,
+                  //Stack se utiliza para poder superponer los elementos
                   child: Stack(
                     children: [
+                      //Positioned limita el espacio en el que se puede mostrar el texto
                       Positioned(
                         right: 0,
                         left: 0,

@@ -44,6 +44,7 @@ class _BuscarLibros extends State<BuscarLibros> {
               ],
             ),
           ),
+          //lista de los libros que se van a mostrar
           SizedBox(
             height: MediaQuery.of(context).size.height - 160,
             child: ListView.builder(
