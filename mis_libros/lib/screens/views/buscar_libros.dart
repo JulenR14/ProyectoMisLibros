@@ -15,39 +15,41 @@ class _BuscarLibros extends State<BuscarLibros> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MisColores.marronOscuro1,
-      body: Column(children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
-          child: Row(
-            children: [
-              //con el expanded hacemos que el TextField ocupe todo el espacio que le queda disponible
-              //en la fila dejando el espacio suficiente para el boton de buscar
-              const Expanded(
-                child: TextField(
-                  decoration: InputDecoration(
-                      labelText: 'Titulo del libro',
-                      fillColor: Colors.transparent),
+      body: SingleChildScrollView(
+        child: Column(children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
+            child: Row(
+              children: [
+                //con el expanded hacemos que el TextField ocupe todo el espacio que le queda disponible
+                //en la fila dejando el espacio suficiente para el boton de buscar
+                const Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                        labelText: 'Titulo del libro',
+                        fillColor: Colors.transparent),
+                  ),
                 ),
-              ),
-              TextButton(
-                onPressed: () {
-                  // Aquí puedes poner la lógica de búsqueda
-                },
-                child: const Icon(Icons.search,
-                    color: MisColores.marronOscuro4, size: 40),
-              ),
-            ],
+                TextButton(
+                  onPressed: () {
+                    // Aquí puedes poner la lógica de búsqueda
+                  },
+                  child: const Icon(Icons.search,
+                      color: MisColores.marronOscuro4, size: 40),
+                ),
+              ],
+            ),
           ),
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height - 160,
-          child: ListView.builder(
-              itemCount: listaLibros.length,
-              itemBuilder: (BuildContext context, int index) {
-                return _crearListaCards(index);
-              }),
-        ),
-      ]),
+          SizedBox(
+            height: MediaQuery.of(context).size.height - 160,
+            child: ListView.builder(
+                itemCount: listaLibros.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return _crearListaCards(index);
+                }),
+          ),
+        ]),
+      ),
     );
   }
 

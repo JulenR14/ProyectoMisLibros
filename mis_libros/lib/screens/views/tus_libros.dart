@@ -38,6 +38,7 @@ class _TusLibros extends State<TusLibros> {
   Widget crearListaCards(int i) {
     return Padding(
       padding: const EdgeInsets.all(10),
+      //con el GestureDetector se le indica que cuando se toque la card se va a abrir la pantalla de informacion del libro
       child: GestureDetector(
           onTap: () {
             Navigator.push(
@@ -45,18 +46,24 @@ class _TusLibros extends State<TusLibros> {
                 MaterialPageRoute(
                     builder: (context) => InfoLibro(libro: listaLibros[i])));
           },
+          //se crea la carta del libro
           child: Card(
             shadowColor: MisColores.nero,
             color: MisColores.marronOscuro1,
+            //SizeBox se utiliza para daerle un tamaño a la carta
             child: SizedBox(
               height: 200,
+              //Row se utiliza para poder alinear los elementos de la carta en una sola fila
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  //El primer elemento la carta va a ser la imagen
+                  //en la que se aplica con Hero una animacion de transicion
                   Padding(
                     padding: const EdgeInsets.all(15),
                     child: Hero(
-                      tag: "${listaLibros[i].imagen}tuslibros",
+                      tag:
+                          "${listaLibros[i].imagen}tuslibros", //se le asigna un tag para poder hacer la animacion en la otra pantalla
                       child: Image(
                         image: AssetImage(listaLibros[i].imagen),
                         width: 100,
@@ -64,20 +71,30 @@ class _TusLibros extends State<TusLibros> {
                       ),
                     ),
                   ),
+                  //El segundo elemento de la carta va a ser el titulo y el autor del libro
                   SizedBox(
                     height: 200,
+                    //la anchura de este elemento va a ser el ancho de la pantalla menos 180
                     width: MediaQuery.of(context).size.width - 180,
+                    //Stack se utiliza para poder superponer los elementos
+                    //gracias a Stack podemos poner el titulo y autor sin que se salga del limite de la carta
+                    //por el positioned
                     child: Stack(children: [
+                      //Positioned limita el espacio en el que se puede mostrar el texto
                       Positioned(
                         right: 0,
                         left: 0,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Hero(
-                                tag: listaLibros[i].titulo,
+                        //establecemos el tamaño en el que se tiene que mostrar la columna del texto del titulo y autor
+                        //sin el SizedBox no podriamos centrar el Column porque coge los limites del positiones
+                        child: SizedBox(
+                          height: 200,
+                          width: MediaQuery.of(context).size.width - 180,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              //el titulo del libro
+                              Padding(
+                                padding: const EdgeInsets.all(10),
                                 child: Text(
                                   listaLibros[i].titulo,
                                   textAlign: TextAlign.center,
@@ -88,19 +105,20 @@ class _TusLibros extends State<TusLibros> {
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Text(
-                                listaLibros[i].autor,
-                                style: const TextStyle(
-                                    fontFamily: 'InriaSerif',
-                                    color: Colors.black,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                            )
-                          ],
+                              //el autor del libro
+                              Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Text(
+                                  listaLibros[i].autor,
+                                  style: const TextStyle(
+                                      fontFamily: 'InriaSerif',
+                                      color: Colors.black,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       )
                     ]),
