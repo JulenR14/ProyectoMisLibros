@@ -30,20 +30,121 @@ class _TusLibros extends State<TusLibros> {
               itemCount: listaLibros.length,
               //va creando automaticamente cada una de las cards de los libros
               itemBuilder: (BuildContext context, int index) {
-                return crearListaCards(index);
+                return crearListaCardsVertical(index);
               }));
     } else {
-      return const Scaffold(
-        body: Center(
-          child: Text('Tus libros'),
+      return Scaffold(
+        backgroundColor: MisColores.marronOscuro4,
+        body: GridView.count(
+          //creamos 2 columnas
+          crossAxisCount: 2,
+          //cambiamos el tamaño de las cards
+          childAspectRatio: 1.5,
+          // Genera la lista de libros llamando al metodo crearListaCardsHorizontal
+          children: List.generate(listaLibros.length, (index) {
+            return crearListaCardsHorizontal(index);
+          }),
         ),
       );
     }
   }
 
-  /// Este metodo se encarga de crear las cards que se van a mostrar en la lista
-  /// segun el indice que le pasa el metodo builder
-  Widget crearListaCards(int i) {
+/**
+ * Este metodo se encarga de crear la lista de libros en forma horizontal
+ * @param i es el indice del libro que se va a mostrar
+ */
+  Widget crearListaCardsHorizontal(int i) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      //con el GestureDetector se le indica que cuando se toque la card se va a abrir la pantalla de informacion del libro
+      child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        InfoLibro(libro: listaLibros[i], libroAgregado: true)));
+          },
+          //se crea la carta del libro
+          child: Card(
+            shadowColor: MisColores.nero,
+            color: MisColores.marronOscuro1,
+            //SizeBox se utiliza para daerle un tamaño a la carta
+            child: SizedBox(
+              height: 200,
+              width: 200,
+              //Row se utiliza para poder alinear los elementos de la carta en una sola fila
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(15),
+                    //El primer elemento la carta va a ser la imagen
+                    //en la que se aplica con Hero una animacion de transicion
+                    child: Hero(
+                      tag: "${listaLibros[i].imagen}tuslibros",
+                      child: Image(
+                        image: AssetImage(listaLibros[i].imagen),
+                        width: 100,
+                        height: 150,
+                      ),
+                    ),
+                  ),
+                  //El segundo elemento de la carta va a ser el titulo y el autor del libro
+                  SizedBox(
+                    height: 200,
+                    width: 200,
+                    child: Stack(children: [
+                      Positioned(
+                        right: 0,
+                        left: 0,
+                        child: SizedBox(
+                          height: 200,
+                          width: 200,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Text(
+                                  listaLibros[i].titulo,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                      fontFamily: 'InriaSerif',
+                                      color: MisColores.marronOscuro4,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Text(
+                                  listaLibros[i].autor,
+                                  style: const TextStyle(
+                                      fontFamily: 'InriaSerif',
+                                      color: Colors.black,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ]),
+                  )
+                ],
+              ),
+            ),
+          )),
+    );
+  }
+
+  /**
+   * Este metodo se encarga de crear la lista de libros en forma vertical
+   * @param i es el indice del libro que se va a mostrar
+   */
+  Widget crearListaCardsVertical(int i) {
     return Padding(
       padding: const EdgeInsets.all(10),
       //con el GestureDetector se le indica que cuando se toque la card se va a abrir la pantalla de informacion del libro
