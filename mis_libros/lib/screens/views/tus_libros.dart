@@ -14,23 +14,31 @@ class TusLibros extends StatefulWidget {
 class _TusLibros extends State<TusLibros> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        //ME GUSTARIA COLOCAR UN MENU EN EL QUE SE PUEDA CAMBIAR A LOS LIBROS POR LEER O A LOS LIBROS LEIDOS
-        /*appBar: AppBar(
+    if (MediaQuery.of(context).size.width < 600) {
+      return Scaffold(
+          //ME GUSTARIA COLOCAR UN MENU EN EL QUE SE PUEDA CAMBIAR A LOS LIBROS POR LEER O A LOS LIBROS LEIDOS
+          /*appBar: AppBar(
           title: const Text('Tus Libros'),
           backgroundColor: MisColores.marronOscuro4,
         ),*/
-        //cambiamos el color del fondo de la pantalla
-        backgroundColor: MisColores.marronOscuro4,
-        //en el body de la pantalla se muestra una lista de libros
-        //los cuales son los libros que tiene agregado el usuario como leidos
-        body: ListView.builder(
-            //indicamos que cantidad de libros se van a mostrar
-            itemCount: listaLibros.length,
-            //va creando automaticamente cada una de las cards de los libros
-            itemBuilder: (BuildContext context, int index) {
-              return crearListaCards(index);
-            }));
+          //cambiamos el color del fondo de la pantalla
+          backgroundColor: MisColores.marronOscuro4,
+          //en el body de la pantalla se muestra una lista de libros
+          //los cuales son los libros que tiene agregado el usuario como leidos
+          body: ListView.builder(
+              //indicamos que cantidad de libros se van a mostrar
+              itemCount: listaLibros.length,
+              //va creando automaticamente cada una de las cards de los libros
+              itemBuilder: (BuildContext context, int index) {
+                return crearListaCards(index);
+              }));
+    } else {
+      return const Scaffold(
+        body: Center(
+          child: Text('Tus libros'),
+        ),
+      );
+    }
   }
 
   /// Este metodo se encarga de crear las cards que se van a mostrar en la lista

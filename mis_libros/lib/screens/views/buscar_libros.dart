@@ -16,46 +16,54 @@ class BuscarLibros extends StatefulWidget {
 class _BuscarLibros extends State<BuscarLibros> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: MisColores.marronOscuro1,
-      //SingleChildScrollView se utiliza para poder hacer scroll en la pantalla
-      body: SingleChildScrollView(
-        child: Column(children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
-            child: Row(
-              children: [
-                //con el expanded hacemos que el TextField ocupe todo el espacio que le queda disponible
-                //en la fila dejando el espacio suficiente para el boton de buscar
-                const Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                        labelText: 'Titulo del libro',
-                        fillColor: Colors.transparent),
+    if (MediaQuery.of(context).size.width < 600) {
+      return Scaffold(
+        backgroundColor: MisColores.marronOscuro1,
+        //SingleChildScrollView se utiliza para poder hacer scroll en la pantalla
+        body: SingleChildScrollView(
+          child: Column(children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
+              child: Row(
+                children: [
+                  //con el expanded hacemos que el TextField ocupe todo el espacio que le queda disponible
+                  //en la fila dejando el espacio suficiente para el boton de buscar
+                  const Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                          labelText: 'Titulo del libro',
+                          fillColor: Colors.transparent),
+                    ),
                   ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    // Aquí hay que poner la lógica de búsqueda
-                  },
-                  child: const Icon(Icons.search,
-                      color: MisColores.marronOscuro4, size: 40),
-                ),
-              ],
+                  TextButton(
+                    onPressed: () {
+                      // Aquí hay que poner la lógica de búsqueda
+                    },
+                    child: const Icon(Icons.search,
+                        color: MisColores.marronOscuro4, size: 40),
+                  ),
+                ],
+              ),
             ),
-          ),
-          //lista de los libros que se van a mostrar
-          SizedBox(
-            height: MediaQuery.of(context).size.height - 160,
-            child: ListView.builder(
-                itemCount: listaLibros.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return crearListaCards(index);
-                }),
-          ),
-        ]),
-      ),
-    );
+            //lista de los libros que se van a mostrar
+            SizedBox(
+              height: MediaQuery.of(context).size.height - 160,
+              child: ListView.builder(
+                  itemCount: listaLibros.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return crearListaCards(index);
+                  }),
+            ),
+          ]),
+        ),
+      );
+    } else {
+      return const Scaffold(
+        body: Center(
+          child: Text('Busqueda de libros'),
+        ),
+      );
+    }
   }
 
   /// Este metodo se encarga de crear las cards que se van a mostrar en la lista
