@@ -143,11 +143,124 @@ class _AgregaLibro extends State<AgregaLibro> {
             ],
           ));
     } else {
-      return const Scaffold(
-        body: Center(
-          child: Text('Agregar Libro'),
-        ),
-      );
+      return Scaffold(
+          backgroundColor: MisColores.marronOscuro1,
+          body: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: SingleChildScrollView(
+                child: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(top: 15),
+                  child: Text(
+                    'Agrega un libro',
+                    style: TextStyle(
+                      color: MisColores.marronOscuro4,
+                      fontSize: 40,
+                    ),
+                  ),
+                ),
+                //Padding es un widget que añade un espacio alrededor de su hijo.
+                //Dentro de el tenemos un TextField que es un widget que permite al usuario escribir texto.
+                //En este caso el texto va a ser el titulo del libro que se quiere agregar.
+                const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        //mostramos el icono del titulo al principio del TextField
+                        prefixIcon: Icon(Icons.title),
+                        labelText: 'Título Libro',
+                        //rellenamos el TextField con un color transparente
+                        fillColor: Colors.transparent,
+                        filled: true,
+                      ),
+                    )),
+                //Padding es un widget que añade un espacio alrededor de su hijo.
+                //Dentro de el tenemos un TextField que es un widget que permite al usuario escribir texto.
+                //En este caso el texto va a ser el autor del libro que se quiere agregar.
+                const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        //mostramos el icono del autor(persona) al principio del TextField
+                        prefixIcon: Icon(Icons.person),
+                        labelText: 'Autor',
+                        //rellenamos el TextField con un color transparente
+                        fillColor: Colors.transparent,
+                        filled: true,
+                      ),
+                    )),
+                const SizedBox(
+                  height: 20,
+                ),
+                RatingBar.builder(
+                  itemSize: 40,
+                  initialRating: 0,
+                  minRating: 0,
+                  direction: Axis.horizontal,
+                  allowHalfRating: true,
+                  itemCount: 5,
+                  itemPadding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  itemBuilder: (context, _) => const Icon(
+                    Icons.star,
+                    color: MisColores.marronOscuro6,
+                  ),
+                  onRatingUpdate: (rating) {
+                    Logger().i(rating);
+                  },
+                ),
+                const SizedBox(height: 20),
+                Card(
+                  color: MisColores.marronOscuro2,
+                  child: SizedBox(
+                    height: 200,
+                    width: MediaQuery.of(context).size.width - 60,
+                    child: const Stack(
+                      children: [
+                        Positioned(
+                            right: 0,
+                            left: 0,
+                            child: Padding(
+                                padding: EdgeInsets.all(3),
+                                child: SizedBox(
+                                  height: 200,
+                                  child: SingleChildScrollView(
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                        labelText: 'Descripción',
+                                        //rellenamos el TextField con un color transparente
+                                        fillColor: Colors.transparent,
+                                        filled: true,
+                                      ),
+                                      maxLines: null,
+                                    ),
+                                  ),
+                                )))
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(2),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(MisColores.marronOscuro4),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        "Agregar",
+                        style: TextStyle(
+                            color: MisColores.marronOscuro1, fontSize: 15),
+                      ),
+                    ),
+                    onPressed: () {},
+                  ),
+                )
+              ],
+            )),
+          ));
     }
   }
 }
